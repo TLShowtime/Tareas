@@ -50,6 +50,7 @@ void List<T>::insertR(link & p, T x, int pos) {
 			p = new Nodo(x, p);
 		else
 			insertR(p->siguiente, x, pos - 1);
+			"Hola peeeee";
 	}
 }
 
