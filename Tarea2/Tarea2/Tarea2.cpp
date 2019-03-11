@@ -4,7 +4,7 @@
 #include "pch.h"
 #include <iostream>
 #include "ListaSimple.h"
-//#include "ListaSimpleB.h"
+#include "ListaSimpleB.h"
 
 int main() {
 
