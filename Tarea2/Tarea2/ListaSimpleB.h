@@ -1,4 +1,9 @@
 #pragma once
+#include <iostream>
+#include <string>
+using std::string;
+using std::cout;
+
 template <class T,int N=10>
 class ListaSimpleB
 {
@@ -31,6 +36,5 @@ public:
 	bool get_front(T& element);
 	bool get_back(T& element);
 	void print();
-	~ListSimpleB();
+	~ListaSimpleB();
 };
-

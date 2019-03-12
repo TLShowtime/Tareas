@@ -157,7 +157,13 @@ void List<T>::print() {
 
 template<class T>
 int List<T>::len() {
-	return tam;
+	link p = primero;
+	int cont = 0;
+	while (p) {
+		cont++;
+		p = p->siguiente;
+	}
+	return cont;
 }
 
 template<class T>
