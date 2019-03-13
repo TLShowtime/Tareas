@@ -20,7 +20,21 @@ int main() {
 	lm.insertarR(50, 99);
 	lm.insertarR(999, 1);
 	lm.print();
-	std::cout << "\n";
+	int x = 0;
+	lm.remove(8, x);
+	lm.print();
+	std::cout << "Elemento guardado: " << x << ".\n";
+	lm.get(7,x);
+	std::cout << "Elemento guardado: " << x << ".\n";
+	int y = 0;
+	lm.get_front(y);
+	std::cout << "Elemento guardado y: " << y << ".\n";
+	lm.get_back(y);
+	std::cout << "Elemento guardado y: " << y << ".\n";
+	
+
+
+	std::cout << "Tamano: " << lm.len() << "\n";
 	List<string> la("Personas");
 	la.push_back("ana");
 	la.push_back("juan");

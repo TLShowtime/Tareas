@@ -107,37 +107,126 @@ void List<T>::insertarR(T x, int pos) {
 template<class T>
 bool List<T>::remove(int pos, T & x)
 {
-	return false;
+	if (pos >= tam || pos<0) {
+		cout << "La posicion " << pos << " no esta en el rango. \n";
+		return false;
+	}
+	else {
+		link p = primero;
+		if (pos == 0) {
+			p = p->siguiente;
+			x = primero->elemento;
+			primero->siguiente == nullptr;
+			primero = p;
+		}
+		else {	
+			int cont = pos;
+			while (cont > 1) {
+				p = p->siguiente;
+				cont--;
+			}
+			x = p->siguiente->elemento;
+
+			if (pos == tam - 1) { // si el elemento a eliminar es el ultimo
+				p->siguiente = nullptr;
+			}
+			else {
+				link q = p->siguiente->siguiente;
+				p->siguiente->siguiente = nullptr;
+				p->siguiente = q;
+			}
+		}
+		tam--;
+		return true;
+	
+	}
+
 }
 
 template<class T>
-bool List<T>::pop(T & x)
+bool List<T>::pop(T & x) // elimina el elemento al inicio de la lista
 {
-	return false;
+	if (tam == 0) { //si no tiene elementos
+		return false;
+	}
+	else {
+		link p = primero;
+		p = p->siguiente;
+		x = primero->elemento;
+		primero->siguiente == nullptr;
+		primero = p;
+		tam--;
+		return true;
+	}
 }
 
 template<class T>
-bool List<T>::pop_back(T & x)
+bool List<T>::pop_back(T & x) //remover el ultimo elemento de la lista
 {
-	return false;
+	if (len() == 0) {
+		return false;
+	}
+	else {
+		link p = primero;
+		while (p->siguiente->siguiente!=nullptr) {
+			p = p->siguiente;
+		}
+		x = p->siguiente->elemento;
+		p->siguiente = nullptr;
+		tam--;
+		return true;
+	}
 }
 
 template<class T>
-bool List<T>::get(int pos, T & element)
+bool List<T>::get(int pos, T & element) //obtener valor del nodo en una posicion
 {
-	return false;
+	if (pos >= tam || pos < 0) {
+		cout << "La posicion " << pos << " no esta en el rango. \n";
+		return false;
+	}
+	else {
+		link p = primero;
+		if (pos == 0) {			//pos 0
+			element = primero->elemento;
+		}
+		else {
+			while (pos > 0) {
+				p = p->siguiente;
+				pos--;
+			}
+			element = p->elemento;
+		}
+		return true;
+	}
+
 }
 
 template<class T>
-bool List<T>::get_front(T & element)
+bool List<T>::get_front(T & element)    //obtener valor del nodo inicial
 {
-	return false;
+	if (tam == 0) {
+		return false;
+	}
+	else {
+		element = primero->elemento;
+	}
 }
 
 template<class T>
-bool List<T>::get_back(T & element)
+bool List<T>::get_back(T & element)		//obtener valor del nodo final
 {
-	return false;
+	if (len() == 0) {
+		return false;
+	}
+	else {
+		link p = primero;
+		while (p->siguiente != nullptr) {
+			p = p->siguiente;
+		}
+		element = p->elemento;
+		return true;
+	}
 }
 
 template<class T>
@@ -152,18 +241,12 @@ void List<T>::print() {
 			p = p->siguiente;
 		}
 	}
-	cout << "]";
+	cout << "]" << "\n";
 }
 
 template<class T>
 int List<T>::len() {
-	link p = primero;
-	int cont = 0;
-	while (p) {
-		cont++;
-		p = p->siguiente;
-	}
-	return cont;
+	return tam;
 }
 
 template<class T>
