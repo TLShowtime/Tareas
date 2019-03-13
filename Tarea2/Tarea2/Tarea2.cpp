@@ -8,34 +8,46 @@
 
 int main() {
 
-	List<int> lm("Lista1");
+	ListaSimpleB<int> lm("Lista2");
 
+	lm.push_back(1);
+	lm.push_back(2);
+	lm.push_back(3);
+	lm.push_back(4);
+	lm.push_back(5);
+	lm.push_back(6);
+	lm.push_back(7);
+	lm.push_back(8);
+	lm.push_back(9);
+	lm.push_back(10);
+	//lm.push_front(30);
+	//lm.push_front(20);
+	//lm.push_front(10);
+	lm.push_back(11);
+	lm.push_back(12);
+//	lm.insertarR(5, 0);
+//	lm.insertarR(8, 1);
+	//lm.insertarR(15, 5);
+//	lm.insertarR(50, 99);
+	//lm.insertarR(999, 1);
+	lm.print();
+	//int x = 0;
+	//lm.remove(10, x);
+	//lm.print();
+	//std::cout << "Elemento guardado: " << x << ".\n";
 	
-	lm.push_front(30);
-	lm.push_front(20);
-	lm.push_front(10);
-	lm.push_back(40);
-	lm.insertarR(5, 0);
-	lm.insertarR(8, 1);
-	lm.insertarR(15, 5);
-	lm.insertarR(50, 99);
-	lm.insertarR(999, 1);
-	lm.print();
-	int x = 0;
-	lm.remove(10, x);
-	lm.print();
-	std::cout << "Elemento guardado: " << x << ".\n";
-	
-	lm.pop(x);
-	lm.print();
-	std::cout << "Elemento guardado: " << x << ".\n";
+	//lm.pop(x);
+	//lm.print();
+	//std::cout << "Elemento guardado: " << x << ".\n";
 
-	std::cout << "Tamano: " << lm.len() << "\n";
-	List<string> la("Personas");
-	la.push_back("ana");
-	la.push_back("juan");
-	la.print();
-	std::cout << "\n";
+	//std::cout << "Tamano: " << lm.len() << "\n";
+	//List<string> la("Personas");
+	//la.push_back("ana");
+	//la.push_back("juan");
+	//la.print();
+//	std::cout << "\n";
+
+
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

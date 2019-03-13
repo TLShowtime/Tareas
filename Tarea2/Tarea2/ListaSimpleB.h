@@ -38,3 +38,63 @@ public:
 	void print();
 	~ListaSimpleB();
 };
+
+
+
+template<class T, int N>
+ListaSimpleB<T, N>::ListaSimpleB(string nombre)
+{
+	primero = nullptr;
+	tam = 0;
+	nombreLista = nombre;
+}
+
+template<class T, int N>
+void ListaSimpleB<T, N>::push_back(T x)
+{
+	if (primero == 0) {
+		primero = new Node();
+		primero->elemento[0]=x;
+		tam++;
+	}
+	else {
+		link p=primero;
+		while (p->siguiente) {
+			p = p->siguiente;
+		}
+		if (p->lleno) {
+			p->siguiente = new Node();
+			p->siguiente->elemento[0]=x;
+			tam++;
+		}
+		else {
+			p->elemento[tam++ % N] = x;
+			p->lleno = (tam%N == 0);
+		}
+	}
+}
+
+
+template<class T, int N>
+void ListaSimpleB<T, N>::print()
+{
+	cout << nombreLista << " = [";
+	if (primero) {
+		link p = primero;
+		cout << p->elemento[0];
+		int i = 1;
+		while (p && i<tam) {
+			if (i%N == 0) {
+				p = p->siguiente;
+			}
+			cout << ", " << p->elemento[i%N];
+			i++;
+		}
+	}
+	cout << "]" << "\n";
+}
+
+template<class T, int N>
+ListaSimpleB<T, N>::~ListaSimpleB() {
+
+}
