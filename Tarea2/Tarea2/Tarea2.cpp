@@ -10,6 +10,7 @@ int main() {
 
 	List<int> lm("Lista1");
 
+	
 	lm.push_front(30);
 	lm.push_front(20);
 	lm.push_front(10);
@@ -21,18 +22,13 @@ int main() {
 	lm.insertarR(999, 1);
 	lm.print();
 	int x = 0;
-	lm.remove(8, x);
+	lm.remove(10, x);
 	lm.print();
 	std::cout << "Elemento guardado: " << x << ".\n";
-	lm.get(7,x);
-	std::cout << "Elemento guardado: " << x << ".\n";
-	int y = 0;
-	lm.get_front(y);
-	std::cout << "Elemento guardado y: " << y << ".\n";
-	lm.get_back(y);
-	std::cout << "Elemento guardado y: " << y << ".\n";
 	
-
+	lm.pop(x);
+	lm.print();
+	std::cout << "Elemento guardado: " << x << ".\n";
 
 	std::cout << "Tamano: " << lm.len() << "\n";
 	List<string> la("Personas");

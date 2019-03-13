@@ -107,7 +107,7 @@ void List<T>::insertarR(T x, int pos) {
 template<class T>
 bool List<T>::remove(int pos, T & x)
 {
-	if (pos >= tam || pos<0) {
+	if (pos<0) {
 		cout << "La posicion " << pos << " no esta en el rango. \n";
 		return false;
 	}
@@ -117,9 +117,13 @@ bool List<T>::remove(int pos, T & x)
 			p = p->siguiente;
 			x = primero->elemento;
 			primero->siguiente == nullptr;
+			delete primero;        //libera del heap
 			primero = p;
 		}
 		else {	
+			if (pos >= tam) {
+				pos = tam - 1;
+			}
 			int cont = pos;
 			while (cont > 1) {
 				p = p->siguiente;
@@ -128,11 +132,15 @@ bool List<T>::remove(int pos, T & x)
 			x = p->siguiente->elemento;
 
 			if (pos == tam - 1) { // si el elemento a eliminar es el ultimo
+				link q = p->siguiente; 
 				p->siguiente = nullptr;
+				delete q;    //libera del heap
+				
 			}
 			else {
-				link q = p->siguiente->siguiente;
+				link q = p->siguiente->siguiente; //el elemento despues de la posicion a eliminar
 				p->siguiente->siguiente = nullptr;
+				delete p->siguiente; //libera del heap 
 				p->siguiente = q;
 			}
 		}
@@ -154,6 +162,7 @@ bool List<T>::pop(T & x) // elimina el elemento al inicio de la lista
 		p = p->siguiente;
 		x = primero->elemento;
 		primero->siguiente == nullptr;
+		delete primero; //libera del heap lo que apunta primero
 		primero = p;
 		tam--;
 		return true;
@@ -172,7 +181,9 @@ bool List<T>::pop_back(T & x) //remover el ultimo elemento de la lista
 			p = p->siguiente;
 		}
 		x = p->siguiente->elemento;
+		link q = p->siguiente;
 		p->siguiente = nullptr;
+		delete q;    //libera del heap
 		tam--;
 		return true;
 	}
