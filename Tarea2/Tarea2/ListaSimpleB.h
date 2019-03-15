@@ -157,3 +157,76 @@ template<class T, int N>
 ListaSimpleB<T, N>::~ListaSimpleB() {
 
 }
+
+template<class T, int N>
+int ListaSimpleB<T, N>::len(){
+	return tam;
+}
+
+template<class T, int N>
+void ListaSimpleB<T, N>::push_front(T x)
+{
+	if (primero == 0) {
+		primero = new Node();
+		primero->elemento[0] = x;
+		tam++;
+	}
+	else {
+		int elementoBrinco;
+		link p = primero;
+		
+		if (p -> lleno==false) {
+			p->elemento[9] = p->elemento[8];
+			p->elemento[8] = p->elemento[7];
+			p->elemento[7] = p->elemento[6];
+			p->elemento[6] = p->elemento[5];
+			p->elemento[5] = p->elemento[4];
+			p->elemento[4] = p->elemento[3];
+			p->elemento[3] = p->elemento[2];
+			p->elemento[2] = p->elemento[1];
+			p->elemento[1] = p->elemento[0];
+			p->elemento[0] = x;
+		}
+		else {
+			elementoBrinco = p->elemento[9];
+			while (p->siguiente != nullptr && p->lleno == true) {
+				if (p->siguiente->lleno = false) {
+					p->elemento[9] = p->elemento[8];
+					p->elemento[8] = p->elemento[7];
+					p->elemento[7] = p->elemento[6];
+					p->elemento[6] = p->elemento[5];
+					p->elemento[5] = p->elemento[4];
+					p->elemento[4] = p->elemento[3];
+					p->elemento[3] = p->elemento[2];
+					p->elemento[2] = p->elemento[1];
+					p->elemento[1] = p->elemento[0];
+					p->elemento[0] = elementoBrinco;
+					p = p->siguiente;
+					elementoBrinco = p->elemento[9];
+				}
+			}
+			if (p->lleno == false) {
+				p->elemento[9] = p->elemento[8];
+				p->elemento[8] = p->elemento[7];
+				p->elemento[7] = p->elemento[6];
+				p->elemento[6] = p->elemento[5];
+				p->elemento[5] = p->elemento[4];
+				p->elemento[4] = p->elemento[3];
+				p->elemento[3] = p->elemento[2];
+				p->elemento[2] = p->elemento[1];
+				p->elemento[1] = p->elemento[0];
+				p->elemento[0] = elementoBrinco;
+			}
+			if (p->lleno == true) {
+				p->siguiente = new Node();
+				p = p->siguiente;
+				p->elemento[0] = elementoBrinco;
+			}
+		
+		}tam = tam + 1;
+		
+		
+
+		
+	}
+}

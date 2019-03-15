@@ -55,6 +55,8 @@ int main() {
 											//ListaSimple
 	printEnunciado(0);
 	List<int> lm("Lista1");
+	
+
 	print(5, 1); 
 	lm.print();
 	imprimirExito(lm.remove(3, elemento_removido),metodos[5]);
@@ -191,6 +193,38 @@ int main() {
 	printElemento(elemento_removido);
 
 	//----------------------------ListaSimpleB-----------------------------------------------
+	cout << "----------------------------ListaSimpleB-----------------------------------\n";
+	ListaSimpleB<int> ld("Lista Doble 1");
+	int tamano;
+	ld.push_back(12);
+	ld.push_back(11);
+	ld.push_back(12);
+	ld.push_back(11);
+	ld.push_back(12);
+	ld.push_back(11);
+	ld.push_back(12);
+	ld.push_back(11);
+	ld.push_back(12);
+	ld.push_back(11);
+	ld.push_back(12);
+	ld.push_back(12);
+	
+	tamano=ld.len();
+	ld.print();
+	cout << "\nEl tamano es: " << tamano;
+	
+	ld.push_front(55);
+	ld.push_front(56);
+	ld.push_front(55);
+	ld.push_front(56);
+	ld.push_front(55);
+	ld.push_front(56);
+	ld.push_front(55);
+
+	tamano = ld.len();
+	cout << "\nEl tamano es: " << tamano << "  ";
+	//ld.print();
+	
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
