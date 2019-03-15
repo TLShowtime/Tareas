@@ -50,6 +50,65 @@ ListaSimpleB<T, N>::ListaSimpleB(string nombre)
 }
 
 template<class T, int N>
+int ListaSimpleB<T, N>::len()
+{
+	return tam;
+}
+
+template<class T, int N>
+void ListaSimpleB<T, N>::push_front(T x) {
+	if (primero == nullptr) {
+		primero = new Node();
+		primero->elemento[0] = x;
+		tam++;
+	}
+	else {
+		link p = primero;
+		int i = N - 1;
+		T elementoBrinco = p->elemento[i];
+		T elementoPrimer = x;
+		while (p->siguiente && p->lleno) {
+			p->elemento[i] = p->elemento[i - 1];
+			i--;
+			if (i == 0) {
+				p->elemento[i] = elementoPrimer;
+				p = p->siguiente;
+				elementoPrimer = elementoBrinco;
+				i = N - 1;
+				elementoBrinco = p->elemento[i];
+			}
+		}
+		if (p->lleno) {
+			i = N - 1;
+			T elementoBrinco = p->elemento[i];
+			while (i > 0) {
+				p->elemento[i] = p->elemento[i - 1];
+				i--;
+				if (i == 0) {
+					p->elemento[i] = elementoPrimer;
+					p->siguiente = new Node();
+					p = p->siguiente;
+					p->elemento[i] = elementoBrinco;
+					tam++;
+				}
+			}
+		}
+		else {
+			i = tam % N;
+			while (i > 0) {
+				p->elemento[i] = p->elemento[i - 1];
+				i--;
+				if (i == 0) {
+					p->elemento[i] = elementoPrimer;
+				}
+			}
+			tam++;
+			p->lleno = tam % N == 0;
+		}
+	}
+}
+
+template<class T, int N>
 void ListaSimpleB<T, N>::push_back(T x)
 {
 	if (primero == 0) {
