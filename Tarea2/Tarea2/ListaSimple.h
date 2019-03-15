@@ -37,6 +37,7 @@ public:
 	bool get_front(T& element);
 	bool get_back(T& element);
 	void print();
+	string to_String();
 	~List();
 
 };
@@ -107,46 +108,51 @@ void List<T>::insertarR(T x, int pos) {
 template<class T>
 bool List<T>::remove(int pos, T & x)
 {
-	if (pos<0) {
-		cout << "La posicion " << pos << " no esta en el rango. \n";
-		return false;
-	}
-	else {
-		link p = primero;
-		if (pos == 0) {
-			p = p->siguiente;
-			x = primero->elemento;
-			primero->siguiente == nullptr;
-			delete primero;        //libera del heap
-			primero = p;
+	if (primero) {
+		if (pos < 0) {
+			cout << "La posicion " << pos << " no esta en el rango. \n";
+			return false;
 		}
-		else {	
-			if (pos >= tam) {
-				pos = tam - 1;
-			}
-			int cont = pos;
-			while (cont > 1) {
+		else {
+			link p = primero;
+			if (pos == 0) {
 				p = p->siguiente;
-				cont--;
-			}
-			x = p->siguiente->elemento;
-
-			if (pos == tam - 1) { // si el elemento a eliminar es el ultimo
-				link q = p->siguiente; 
-				p->siguiente = nullptr;
-				delete q;    //libera del heap
-				
+				x = primero->elemento;
+				primero->siguiente == nullptr;
+				delete primero;        //libera del heap
+				primero = p;
 			}
 			else {
-				link q = p->siguiente->siguiente; //el elemento despues de la posicion a eliminar
-				p->siguiente->siguiente = nullptr;
-				delete p->siguiente; //libera del heap 
-				p->siguiente = q;
+				if (pos >= tam) {
+					pos = tam - 1;
+				}
+				int cont = pos;
+				while (cont > 1) {
+					p = p->siguiente;
+					cont--;
+				}
+				x = p->siguiente->elemento;
+
+				if (pos == tam - 1) { // si el elemento a eliminar es el ultimo
+					link q = p->siguiente;
+					p->siguiente = nullptr;
+					delete q;    //libera del heap
+
+				}
+				else {
+					link q = p->siguiente->siguiente; //el elemento despues de la posicion a eliminar
+					p->siguiente->siguiente = nullptr;
+					delete p->siguiente; //libera del heap 
+					p->siguiente = q;
+				}
 			}
+			tam--;
+			return true;
+
 		}
-		tam--;
-		return true;
-	
+	}
+	else {
+		return false;
 	}
 
 }
@@ -253,6 +259,23 @@ void List<T>::print() {
 		}
 	}
 	cout << "]" << "\n";
+}
+
+template<class T>
+string List<T>::to_String()
+{
+	link p = primero;
+	string s = nombreLista + " = [";
+	if (p) {
+		s += std::to_string(p->elemento);
+		p = p->siguiente;
+	}
+	while (p) {
+		s += ", " + std::to_string(p->elemento);
+		p = p->siguiente;
+	}
+	s += "]";
+	return s;
 }
 
 template<class T>
