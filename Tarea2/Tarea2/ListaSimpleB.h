@@ -114,19 +114,61 @@ void ListaSimpleB<T, N>::push_front(T x)
 	}
 	else {
 		int tam = len();
-
-		/*link p = primero;
-		while (p->siguiente) {
-			p = p->siguiente;
-		}*/
-		if (p->lleno) {
-			p->siguiente = new Node();
-			p->siguiente->elemento[0] = x;
-			tam++;
+		int elementoBrinco;
+		link p = primero;
+		
+		if (p -> lleno==false) {
+			p->elemento[9] = p->elemento[8];
+			p->elemento[8] = p->elemento[7];
+			p->elemento[7] = p->elemento[6];
+			p->elemento[6] = p->elemento[5];
+			p->elemento[5] = p->elemento[4];
+			p->elemento[4] = p->elemento[3];
+			p->elemento[3] = p->elemento[2];
+			p->elemento[2] = p->elemento[1];
+			p->elemento[1] = p->elemento[0];
+			p->elemento[0] = x;
 		}
 		else {
-			p->elemento[tam++ % N] = x;
-			p->lleno = (tam%N == 0);
+			elementoBrinco = p->elemento[9];
+			while (p->siguiente != nullptr && p->lleno == true) {
+				if (p->siguiente->lleno = false) {
+					p->elemento[9] = p->elemento[8];
+					p->elemento[8] = p->elemento[7];
+					p->elemento[7] = p->elemento[6];
+					p->elemento[6] = p->elemento[5];
+					p->elemento[5] = p->elemento[4];
+					p->elemento[4] = p->elemento[3];
+					p->elemento[3] = p->elemento[2];
+					p->elemento[2] = p->elemento[1];
+					p->elemento[1] = p->elemento[0];
+					p->elemento[0] = elementoBrinco;
+					p = p->siguiente;
+					elementoBrinco = p->elemento[9];
+				}
+			}
+			if (p->lleno == false) {
+				p->elemento[9] = p->elemento[8];
+				p->elemento[8] = p->elemento[7];
+				p->elemento[7] = p->elemento[6];
+				p->elemento[6] = p->elemento[5];
+				p->elemento[5] = p->elemento[4];
+				p->elemento[4] = p->elemento[3];
+				p->elemento[3] = p->elemento[2];
+				p->elemento[2] = p->elemento[1];
+				p->elemento[1] = p->elemento[0];
+				p->elemento[0] = elementoBrinco;
+			}
+			if (p->lleno == true) {
+				p->siguiente = new Node();
+				p = p->siguiente;
+				p->elemento[0] = elementoBrinco;
+			}
+		
 		}
+		
+			
+
+		
 	}
 }

@@ -196,11 +196,23 @@ int main() {
 	cout << "----------------------------ListaSimpleB-----------------------------------\n";
 	ListaSimpleB<int> ld("Lista Doble 1");
 	int tamano;
-	ld.push_back(11);
-	ld.push_back(12);
+	//ld.push_back(12);
+	//ld.push_back(11);
+	//ld.push_back(12);
+	//ld.push_back(11);
+	//ld.push_back(12);
+	//ld.push_back(11);
+	//ld.push_back(12);
+	//ld.push_back(11);
+	//ld.push_back(12);
+	//ld.push_back(11);
 	tamano=ld.len();
 	ld.print();
 	cout << "\nEl tamano es: " << tamano;
+	ld.push_front(55);
+	ld.push_front(56);
+
+	ld.print();
 
 }
 

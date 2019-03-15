@@ -118,7 +118,7 @@ bool List<T>::remove(int pos, T & x)
 			if (pos == 0) {
 				p = p->siguiente;
 				x = primero->elemento;
-				primero->siguiente == nullptr;
+				primero->siguiente = nullptr;
 				delete primero;        //libera del heap
 				primero = p;
 			}
@@ -167,7 +167,7 @@ bool List<T>::pop(T & x) // elimina el elemento al inicio de la lista
 		link p = primero;
 		p = p->siguiente;
 		x = primero->elemento;
-		primero->siguiente == nullptr;
+		primero->siguiente = nullptr;
 		delete primero; //libera del heap lo que apunta primero
 		primero = p;
 		tam--;
