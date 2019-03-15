@@ -24,7 +24,7 @@ class ListaSimpleB
 
 public:
 	ListaSimpleB(string nombre);
-	/*int len();
+	int len();
 	void push_front(T x);
 	void push_back(T x);
 	void insertar(T x, int pos);
@@ -34,7 +34,7 @@ public:
 	bool pop_back(T& x);
 	bool get(int pos, T& element);
 	bool get_front(T& element);
-	bool get_back(T& element);*/
+	bool get_back(T& element);
 	void print();
 	~ListaSimpleB();
 };
@@ -97,4 +97,36 @@ void ListaSimpleB<T, N>::print()
 template<class T, int N>
 ListaSimpleB<T, N>::~ListaSimpleB() {
 
+}
+
+template<class T, int N>
+int ListaSimpleB<T, N>::len(){
+	return tam;
+}
+
+template<class T, int N>
+void ListaSimpleB<T, N>::push_front(T x)
+{
+	if (primero == 0) {
+		primero = new Node();
+		primero->elemento[0] = x;
+		tam++;
+	}
+	else {
+		int tam = len();
+
+		/*link p = primero;
+		while (p->siguiente) {
+			p = p->siguiente;
+		}*/
+		if (p->lleno) {
+			p->siguiente = new Node();
+			p->siguiente->elemento[0] = x;
+			tam++;
+		}
+		else {
+			p->elemento[tam++ % N] = x;
+			p->lleno = (tam%N == 0);
+		}
+	}
 }
