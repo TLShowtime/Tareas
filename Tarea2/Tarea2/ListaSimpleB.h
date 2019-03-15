@@ -113,7 +113,6 @@ void ListaSimpleB<T, N>::push_front(T x)
 		tam++;
 	}
 	else {
-		int tam = len();
 		int elementoBrinco;
 		link p = primero;
 		
@@ -165,9 +164,9 @@ void ListaSimpleB<T, N>::push_front(T x)
 				p->elemento[0] = elementoBrinco;
 			}
 		
-		}
+		}tam = tam + 1;
 		
-			
+		
 
 		
 	}
