@@ -191,7 +191,62 @@ int main() {
 	printElemento(elemento_removido);
 
 	//----------------------------ListaSimpleB-----------------------------------------------
+	ListaSimpleB<int> lm2("Lista2");
+	lm2.push_front(1);
+	lm2.print();
+	lm2.push_front(2);
+	lm2.print();
+	lm2.push_front(3);
+	lm2.print();
+	lm2.push_front(4);
+	lm2.print();
+	lm2.push_front(5);
+	lm2.print();
+	lm2.push_front(6);
+	lm2.print();
+	lm2.push_front(7);
+	lm2.print();
+	lm2.push_front(65);
+	lm2.print();
+	lm2.push_front(45);
+	lm2.print();
+	lm2.push_front(34);
+	lm2.print();
+	lm2.push_front(32);
+	lm2.print();
+	lm2.push_front(4);
+	lm2.print();
+	lm2.push_front(5);
+	lm2.print();
+	lm2.push_front(6);
+	lm2.print();
+	lm2.push_front(7);
+	lm2.print();
+	lm2.push_front(8);
+	lm2.print();
+	lm2.push_front(7);
+	lm2.print();
+	lm2.push_front(65);
+	lm2.print();
+	lm2.push_front(45);
+	lm2.print();
+	lm2.push_front(34);
+	lm2.print();
+	lm2.push_front(32);
+	lm2.print();
+	lm2.push_front(4);
+	lm2.print();
+	lm2.push_front(5);
+	lm2.print();
+	lm2.push_front(6);
+	lm2.print();
+	lm2.push_front(7);
+	lm2.print();
+	lm2.push_front(8);
+	lm2.print();
+
 }
+	
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
 // Depurar programa: F5 o menú Depurar > Iniciar depuración
