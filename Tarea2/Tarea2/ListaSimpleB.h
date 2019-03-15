@@ -24,7 +24,7 @@ class ListaSimpleB
 
 public:
 	ListaSimpleB(string nombre);
-	int len();
+	/*int len();
 	void push_front(T x);
 	void push_back(T x);
 	void insertar(T x, int pos);
@@ -34,7 +34,7 @@ public:
 	bool pop_back(T& x);
 	bool get(int pos, T& element);
 	bool get_front(T& element);
-	bool get_back(T& element);
+	bool get_back(T& element);*/
 	void print();
 	~ListaSimpleB();
 };
