@@ -206,8 +206,6 @@ int main() {
 	ld.push_back(11);
 	ld.push_back(12);
 	ld.push_back(11);
-	ld.push_back(12);
-	ld.push_back(12);
 	
 	tamano=ld.len();
 	ld.print();
@@ -220,10 +218,22 @@ int main() {
 	ld.push_front(55);
 	ld.push_front(56);
 	ld.push_front(55);
-
+	
 	tamano = ld.len();
 	cout << "\nEl tamano es: " << tamano << "  ";
-	//ld.print();
+	
+	ld.print();
+
+	//------------get--------
+	elemento_removido = 0;
+	ld.get(9, elemento_removido);
+	cout <<"\nEn la posicion: "<< 9 <<"se tomo el elemento: "<<elemento_removido;
+	ld.get_front(elemento_removido);
+	cout << "\nSe tomo al inicio un : "<< elemento_removido;
+	ld.get_back(elemento_removido);
+	cout << "\nSe tomo al final un : " << elemento_removido;
+
+	ld.print();
 	
 }
 

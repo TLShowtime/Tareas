@@ -158,8 +158,58 @@ ListaSimpleB<T, N>::~ListaSimpleB() {
 
 }
 
+
 template<class T, int N>
-int ListaSimpleB<T, N>::len(){
-	return tam;
+bool ListaSimpleB<T, N>::get(int pos, T& x) {
+	bool esta;
+	if (tam <= pos) {
+		esta = false;
+		cout << "En esa posicion no hay elementos";
+	}else {
+		if (primero) {
+			link p = primero;
+			int i = 0;
+			while (i < pos / N) {
+				p = p->siguiente;
+			i++;
+			}
+			x = p->elemento[pos%N];	
+		}
+		esta = true;
+	}
+	return esta;
+}
+template<class T,int N>
+bool ListaSimpleB<T, N>::get_front(T& x) {
+	if (tam <= 0) return false;
+	else {
+		x = primero->elemento[0];
+		return true;
+	}
+}
+
+template<class T, int N>
+bool ListaSimpleB<T, N>::get_back(T& x) {
+	bool esta;
+	if (tam <= 0) {
+		esta = false;
+		cout << "En esa posicion no hay elementos";
+	}else {
+		if (primero) {
+			link p = primero;
+			int i = 1;
+			while (p && i < tam) {
+				if (i%N == 0) {
+					p = p->siguiente;
+				}
+				
+				i++;
+			}
+			i--;
+			x = p->elemento[i%N];
+		}
+		esta = true;
+	}
+	return esta;
 }
 
