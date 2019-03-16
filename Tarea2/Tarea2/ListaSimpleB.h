@@ -28,7 +28,6 @@ public:
 	void push_front(T x);
 	void push_back(T x);
 	void insertar(T x, int pos);
-	void insertarR(T x, int pos);
 	bool remove(int pos, T& x);
 	bool pop(T& x);
 	bool pop_back(T& x);
@@ -133,6 +132,140 @@ void ListaSimpleB<T, N>::push_back(T x)
 	}
 }
 
+template<class T, int N>
+void ListaSimpleB<T, N>::insertar(T x, int pos){
+	if (primero==nullptr) {
+		push_back(x);
+	}
+	else {
+		if (pos >= tam) {
+			push_back(x);
+		}
+		else {
+			link p = primero;
+			int i = 0;
+			while (i < pos / N) {
+				p = p->siguiente;
+				i++;
+			}
+			T elementoSustituto = x;
+			if (!p->lleno) {
+				T elementoBrinco = p->elemento[tam%N - 1];
+				i = tam % N - pos % N;
+				int largo = tam % N;
+				while (i > 0) {
+					p->elemento[largo] = p->elemento[largo - 1];
+					i--;
+					largo--;
+					if (i == 0) {
+						p->elemento[largo] = elementoSustituto;
+					}
+				}
+				tam++;
+				p->lleno = tam % N == 0;
+
+			}
+			else {
+				int largo = N - 1;
+				T elementoBrinco = p->elemento[largo];
+				i = N - pos % N - 1;
+				while (i > 0) {
+					p->elemento[largo] = p->elemento[largo - 1];
+					largo--;
+					i--;
+					if (i == 0) {
+						p->elemento[largo] = elementoSustituto;
+						p = p->siguiente;
+						elementoSustituto = elementoBrinco;
+						elementoBrinco = p->elemento[N - 1];
+					}
+				}
+				if (p->lleno) {
+					i = N - 1;
+					T elementoBrinco = p->elemento[i];
+					while (i > 0) {
+						p->elemento[i] = p->elemento[i - 1];
+						i--;
+						if (i == 0) {
+							p->elemento[i] = elementoSustituto;
+							p->siguiente = new Node();
+							p = p->siguiente;
+							p->elemento[i] = elementoBrinco;
+							tam++;
+						}
+					}
+				}
+				else {
+					i = tam % N;
+					while (i > 0) {
+						p->elemento[i] = p->elemento[i - 1];
+						i--;
+						if (i == 0) {
+							p->elemento[i] = elementoSustituto;
+						}
+					}
+					tam++;
+					p->lleno = tam % N == 0;
+				}
+
+			}
+		}
+	}
+
+}
+
+template<class T, int N>
+bool ListaSimpleB<T, N>::remove(int pos, T & x){
+	if (!primero) {
+		return false;
+	}
+	else {
+		link p = primero;
+		int i = 0;
+		while (i < pos / N) {
+			p = p->siguiente;
+			i++;
+		}
+		i = pos%N;
+		x = p->elemento[i];
+		int veces = pos;
+		while (veces < tam) {
+			p -> elemento[i] = p->elemento[i + 1];
+			i++;
+			veces++;
+			if (i%N == 0) {
+				p->elemento[i - 1] = p->siguiente->elemento[0];
+				p = p->siguiente;
+				i = i % N;
+			}
+		}
+		tam--;
+		return false;
+	}
+}
+
+template<class T, int N>
+bool ListaSimpleB<T, N>::pop(T & x){
+	if (!primero) {
+		return false;
+	}
+	else {
+		remove(0, x);
+		return true;
+	}
+}
+
+template<class T, int N>
+bool ListaSimpleB<T, N>::pop_back(T & x){
+	if (!primero) {
+		return false;
+	}
+	else {
+		remove(tam - 1, x);
+		return true;
+	}
+}
+
 
 template<class T, int N>
 void ListaSimpleB<T, N>::print()
@@ -145,6 +278,7 @@ void ListaSimpleB<T, N>::print()
 		while (p && i<tam) {
 			if (i%N == 0) {
 				p = p->siguiente;
+				cout << " || ";
 			}
 			cout << ", " << p->elemento[i%N];
 			i++;
@@ -155,7 +289,14 @@ void ListaSimpleB<T, N>::print()
 
 template<class T, int N>
 ListaSimpleB<T, N>::~ListaSimpleB() {
-
+	link p;
+	while (primero) {
+		// Borrra todos los elementos en la
+		// lista.
+		p = primero->siguiente;
+		delete primero;
+		primero = p;
+	}
 }
 
 
@@ -212,4 +353,3 @@ bool ListaSimpleB<T, N>::get_back(T& x) {
 	}
 	return esta;
 }
-
