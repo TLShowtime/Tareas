@@ -52,15 +52,15 @@ void printElemento(int elemento) {
 int main() {
 	typedef struct Nodo* link;
 	int elemento_removido;
-											//ListaSimple
+	//ListaSimple
 	printEnunciado(0);
 	List<int> lm("Lista1");
-	
 
-	print(5, 1); 
+
+	print(5, 1);
 	lm.print();
-	imprimirExito(lm.remove(3, elemento_removido),metodos[5]);
-	
+	imprimirExito(lm.remove(3, elemento_removido), metodos[5]);
+
 
 	print(6, 1);
 	lm.print();
@@ -72,7 +72,7 @@ int main() {
 
 	print(8, 1);
 	lm.print();
-	imprimirExito(lm.get(0,elemento_removido), metodos[8]);
+	imprimirExito(lm.get(0, elemento_removido), metodos[8]);
 
 	print(9, 1);
 	lm.print();
@@ -97,7 +97,7 @@ int main() {
 	cout << "----------------------------------------------\n";
 
 	//Remove 
-	print(5, 0); 
+	print(5, 0);
 	imprimirExito(lm.remove(3, elemento_removido), metodos[5]); //remover en medio de la lista
 	imprimirExito(lm.remove(12, elemento_removido), metodos[5]);//remover al final de la lista
 	imprimirExito(lm.remove(0, elemento_removido), metodos[5]);//remover al inicio de la lista
@@ -129,7 +129,7 @@ int main() {
 	cout << "Lista Prueba \n";
 	lm.print();
 	cout << "\n---------------------------------------\n";
-	
+
 	//bool pop_back(T& x)
 	print(7, 0);
 	imprimirExito(lm.pop_back(elemento_removido), metodos[7]);
@@ -141,11 +141,11 @@ int main() {
 	//bool get(int pos, T& element)"
 	print(8, 0);
 	lm.print();
-	imprimirExito(lm.get(7,elemento_removido), metodos[8]);
-	printElemento(elemento_removido,7);
-	imprimirExito(lm.get(5,elemento_removido), metodos[8]);
+	imprimirExito(lm.get(7, elemento_removido), metodos[8]);
+	printElemento(elemento_removido, 7);
+	imprimirExito(lm.get(5, elemento_removido), metodos[8]);
 	printElemento(elemento_removido, 5);
-	imprimirExito(lm.get(0,elemento_removido), metodos[8]);
+	imprimirExito(lm.get(0, elemento_removido), metodos[8]);
 	printElemento(elemento_removido, 0);
 
 	//"bool get_front(T& element)"
@@ -196,23 +196,23 @@ int main() {
 	cout << "----------------------------ListaSimpleB-----------------------------------\n";
 	ListaSimpleB<int> ld("Lista Doble 1");
 	int tamano;
-	ld.push_back(12);
+	/**ld.push_back(12);
 	ld.push_back(11);
 	ld.push_back(12);
 	ld.push_back(11);
 	ld.push_back(12);
 	ld.push_back(11);
-	ld.push_back(12);
+	*/ld.push_back(12);
 	ld.push_back(11);
 	ld.push_back(12);
 	ld.push_back(11);
 	ld.push_back(12);
 	ld.push_back(12);
-	
-	tamano=ld.len();
+
+	tamano = ld.len();
 	ld.print();
 	cout << "\nEl tamano es: " << tamano;
-	
+
 	ld.push_front(55);
 	ld.push_front(56);
 	ld.push_front(55);
@@ -222,9 +222,42 @@ int main() {
 	ld.push_front(55);
 
 	tamano = ld.len();
-	cout << "\nEl tamano es: " << tamano << "  ";
-	//ld.print();
-	
+	cout << "\nEl tamano es: " << tamano << "\n";
+	ld.print();
+
+	ld.insertar(12, 2);
+	ld.print();
+	ld.insertar(123124, 6);
+	ld.print();
+	ld.insertar(123124, 12);
+	ld.print();
+	ld.insertar(23, 5);
+	ld.print();
+	ld.insertar(10000, 31);
+	ld.print();
+	ld.insertar(101331, 31);
+	ld.insertar(1001, 31);
+	ld.insertar(1004, 31);
+	ld.insertar(1004213, 31);
+	ld.insertar(1, 31);
+	ld.insertar(10000, 31);
+	ld.insertar(101331, 31);
+	ld.insertar(1001, 31);
+	ld.insertar(1004, 31);
+	ld.print();
+
+	int x;
+	ld.remove(21, x);
+	ld.print();
+	ld.remove(12, x);
+	ld.print();
+	ld.remove(ld.len()-1, x);
+	ld.print();
+	ld.pop(x);
+	ld.print();
+	ld.pop_back(x);
+	ld.print();
+
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
